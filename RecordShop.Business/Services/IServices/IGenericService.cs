@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace RecordShop.Business.Services.IServices
 {
-    public interface IGenericService<in T, DTO> where T : class, IEntity where DTO : class
+    public interface IGenericService<T, DTO> where T : class, IEntity where DTO : class
     {
          Task<IEnumerable<DTO>> GetAllAsync();
          Task<DTO> GetByIdAsync(int id);

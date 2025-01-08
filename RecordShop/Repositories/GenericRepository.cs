@@ -4,6 +4,7 @@ using RecordShop.DataAccess.Interfaces;
 using RecordShop.DataAccess.Repositories.IRepository;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,9 +25,11 @@ namespace RecordShop.DataAccess.Repositories
         public virtual async Task<OperationResult> CreateAsync(T source)
         {
             OperationResult result = new OperationResult();
+       
+          
             try
             {
-                if (source != null)
+                if (source != null && MyValidator<T>.IsValid(source))
                 {
                     _dbSet.Add(source);
                     await _db.SaveChangesAsync();
@@ -67,7 +70,7 @@ namespace RecordShop.DataAccess.Repositories
 
         public virtual async Task<T?> GetByIdAsync(int id)
         {
-            return await _dbSet.Where(i => i.Id == id).FirstAsync();
+            return await _dbSet.Where(i => i.Id == id).FirstOrDefaultAsync();
         }
 
         public virtual async Task<OperationResult> UpdateAsync(int id, T source)
@@ -75,11 +78,26 @@ namespace RecordShop.DataAccess.Repositories
             OperationResult result = new OperationResult();
             try
             {
-                source.Id = id;
-                _dbSet.Update(source);
-                await _db.SaveChangesAsync();
-                result.Message = "Item updated";
-                result.IsSuccess = true;
+                var itemToUpdate = _dbSet.Find(id);
+                if (itemToUpdate!=null && MyValidator<T>.IsValid(source))
+                {
+                    var properties = typeof(T).GetProperties();
+                    foreach(var property in properties)
+                    {
+                        if (property.CanWrite && property.Name!="Id")
+                        {
+                            var newValue = property.GetValue(source);
+                            property.SetValue(itemToUpdate, newValue);
+                        }
+                    }
+                    await _db.SaveChangesAsync();
+                    result.Message = "Item updated";
+                    result.IsSuccess = true;
+                }
+                else
+                {
+                    result.Message = "Invalid data";
+                }
             }
             catch (Exception e)
             {

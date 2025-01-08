@@ -9,7 +9,7 @@ using AutoMapper;
 
 namespace RecordShop.Business.Mapper
 {
-    internal class MapperProfile:Profile
+    public class MapperProfile:Profile
     {
         public MapperProfile()
         {

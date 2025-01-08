@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace RecordShop.DataAccess.Repositories
 {
-    internal class AlbumRepository : GenericRepository<Album>
+    public class AlbumRepository : GenericRepository<Album>
     {
         private ApplicationDbContext _db;
         public AlbumRepository(ApplicationDbContext db) : base(db)
