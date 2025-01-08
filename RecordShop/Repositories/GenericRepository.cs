@@ -21,7 +21,7 @@ namespace RecordShop.DataAccess.Repositories
             _dbSet = _db.Set<T>();
 
         }
-        public async Task<OperationResult> CreateAsync(T source)
+        public virtual async Task<OperationResult> CreateAsync(T source)
         {
             OperationResult result = new OperationResult();
             try
@@ -47,7 +47,7 @@ namespace RecordShop.DataAccess.Repositories
             return result;
         }
 
-        public async Task<bool> DeleteAsync(int id)
+        public virtual async Task<bool> DeleteAsync(int id)
         {
             var entity = GetByIdAsync(id).Result;
             if (entity != null)
@@ -60,17 +60,17 @@ namespace RecordShop.DataAccess.Repositories
             return false;
         }
 
-        public async Task<List<T>> GetAllAsync()
+        public virtual async Task<List<T>> GetAllAsync()
         {
             return await _dbSet.ToListAsync();
         }
 
-        public async Task<T?> GetByIdAsync(int id)
+        public virtual async Task<T?> GetByIdAsync(int id)
         {
             return await _dbSet.Where(i => i.Id == id).FirstAsync();
         }
 
-        public async Task<OperationResult> UpdateAsync(int id, T source)
+        public virtual async Task<OperationResult> UpdateAsync(int id, T source)
         {
             OperationResult result = new OperationResult();
             try

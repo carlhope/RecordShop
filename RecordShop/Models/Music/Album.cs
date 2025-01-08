@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RecordShop.DataAccess.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,11 @@ using System.Threading.Tasks;
 
 namespace RecordShop.DataAccess.Models.Music
 {
-    internal class Album
+    public class Album:IEntity
     {
+        public int Id { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public List<ArtistAlbumJunction> Artist { get; set; }
     }
 }

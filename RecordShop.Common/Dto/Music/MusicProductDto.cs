@@ -1,23 +1,20 @@
-﻿using RecordShop.Common.Enums;
-using RecordShop.DataAccess.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RecordShop.DataAccess.Models.Music
+namespace RecordShop.Common.Dto.Music
 {
-    public class MusicProduct:IEntity
+    public class MusicProductDto
     {
         public int Id { get; set; }
         public DateOnly ReleaseDate { get; set; }
-        //album
         public int MusicAlbumId { get; set; }
-        public Album MusicAlbum { get; set; }
-        //media type
+        public AlbumDto MusicAlbum { get; set; }
+
         public AlbumMediaType MediaType { get; set; }
-        //price
+
         public decimal Price { get; set; }
     }
 }
