@@ -12,7 +12,7 @@ namespace RecordShop.DataAccess.Repositories.IRepository
         public Task<OperationResult> UpdateAsync(int id, T entity);
         public Task<bool> DeleteAsync(int id);
         public Task<T?> GetByIdAsync(int id);
-        public Task<List<T>> GetAllAsync();
+        public Task<IEnumerable<T>> GetAllAsync();
         public Task<OperationResult> CreateAsync(T entity);
     }
 }

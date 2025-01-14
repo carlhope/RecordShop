@@ -63,7 +63,7 @@ namespace RecordShop.DataAccess.Repositories
             return false;
         }
 
-        public virtual async Task<List<T>> GetAllAsync()
+        public virtual async Task<IEnumerable<T>> GetAllAsync()
         {
             return await _dbSet.ToListAsync();
         }

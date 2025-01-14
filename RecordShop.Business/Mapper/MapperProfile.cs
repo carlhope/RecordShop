@@ -6,6 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
+using RecordShop.DataAccess.Models.Inventory;
+using RecordShop.Common.Dto.Inventory;
 
 namespace RecordShop.Business.Mapper
 {
@@ -16,6 +18,9 @@ namespace RecordShop.Business.Mapper
             CreateMap<MusicProduct, MusicProductDto>().ReverseMap();
             CreateMap<Album, AlbumDto>().ReverseMap();
             CreateMap<Artist, ArtistDto>().ReverseMap();
+            CreateMap<AlbumGenre, AlbumGenreDto>().ReverseMap();
+            CreateMap<InventoryItem, InventoryItemDto>().ReverseMap();
+            CreateMap<ArtistAlbumJunction, ArtistAlbumJunctionDto>().ReverseMap();
         }
     }
 }

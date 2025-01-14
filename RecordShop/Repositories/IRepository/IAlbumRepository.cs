@@ -1,4 +1,5 @@
-﻿using RecordShop.Common.Models;
+﻿using RecordShop.Common.Enums;
+using RecordShop.Common.Models;
 using RecordShop.DataAccess.Models.Music;
 using System;
 using System.Collections.Generic;
@@ -8,9 +9,10 @@ using System.Threading.Tasks;
 
 namespace RecordShop.DataAccess.Repositories.IRepository
 {
-    public interface IAlbumRepository:IGenericRepository<Album>
+    public interface IAlbumRepository : IGenericRepository<Album>
     {
-        OperationResult AssignArtistToAlbum(Artist artist, Album album);
-        Task<OperationResult> RemoveArtistFromAlbum(Artist artist, Album album);
+        Task<List<Album>?> GetAllByArtist(int id);
+        Task<List<Album>?> GetAllByGenre(Genre genre);
+        Task<Album>? GetByAlbumName(string name);
     }
 }

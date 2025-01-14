@@ -11,14 +11,14 @@ using System.Threading.Tasks;
 
 namespace RecordShop.Business.Services
 {
-    public class AlbumService:GenericService<Album, AlbumDto>, IAlbumService
+    public class MusicProductService:GenericService<MusicProduct, MusicProductDto>, IMusicProductService
     {
         public IMapper _mapper;
-        public IAlbumRepository _albumRepository;
+        public IMusicProductRepository _musicProductRepository;
 
-        public AlbumService(IMapper mapper, IAlbumRepository albumRepository) : base(mapper, albumRepository)
+        public MusicProductService(IMapper mapper, IMusicProductRepository musicProductRepository) : base(mapper, musicProductRepository)
         {
-            _albumRepository = albumRepository;
+            _musicProductRepository = musicProductRepository;
             _mapper = mapper;
         }
     }

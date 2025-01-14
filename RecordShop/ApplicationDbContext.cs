@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using RecordShop.DataAccess.Models.Inventory;
 using RecordShop.DataAccess.Models.Music;
 using System;
 using System.Collections.Generic;
@@ -22,5 +23,6 @@ namespace RecordShop.DataAccess
         internal DbSet<Album> Albums { get; set; }
         internal DbSet<Artist> Artists { get; set; }
         internal DbSet<ArtistAlbumJunction> ArtistAlbumJunctions { get; set; }
+        internal DbSet<InventoryItem> inventoryItems { get; set; }
     }
 }

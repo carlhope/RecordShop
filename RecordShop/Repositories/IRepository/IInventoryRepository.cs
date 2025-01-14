@@ -1,5 +1,4 @@
-﻿using RecordShop.Common.Models;
-using RecordShop.DataAccess.Models.Music;
+﻿using RecordShop.DataAccess.Models.Inventory;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace RecordShop.DataAccess.Repositories.IRepository
 {
-    public interface IArtistRepository:IGenericRepository<Artist>
+    public interface IInventoryRepository:IGenericRepository<InventoryItem>
     {
-      
+        Task<List<InventoryItem>> GetAllInStock();
     }
 }

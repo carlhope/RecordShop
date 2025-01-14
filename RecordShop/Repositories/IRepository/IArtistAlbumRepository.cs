@@ -11,7 +11,7 @@ namespace RecordShop.DataAccess.Repositories.IRepository
     public interface IArtistAlbumRepository
     {
 
-        OperationResult AssignArtistToAlbum(int artistId, int albumId);
-        OperationResult RemoveArtistFromAlbum(int artistId, int albumId);
+        Task<OperationResult> AssignArtistToAlbum(int artistId, int albumId);
+        Task<OperationResult> RemoveArtistFromAlbum(int artistId, int albumId);
     }
 }

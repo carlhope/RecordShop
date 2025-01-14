@@ -7,9 +7,9 @@ namespace RecordShop.Api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class AlbumController : GenericController<Album, AlbumDto>
+    public class MusicProductController : GenericController<MusicProduct, MusicProductDto>
     {
-        public AlbumController(IAlbumService albumService) : base(albumService)
+        public MusicProductController(IMusicProductService musicProductService) : base(musicProductService)
         {
         }
     }

@@ -15,7 +15,7 @@ namespace RecordShop.Tests.ServicesTests
 {
     internal class ArtistServicesTest
     {
-        private static Mock<IGenericRepository<Artist>> repo = new Mock<IGenericRepository<Artist>>();
+        private static Mock<IArtistRepository> repo = new Mock<IArtistRepository>();
         private IMapper _mapper;
         private ArtistService artistService;
 
