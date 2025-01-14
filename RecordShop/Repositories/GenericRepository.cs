@@ -39,7 +39,7 @@ namespace RecordShop.DataAccess.Repositories
                 else
                 {
 
-                    result.Message = "Item is null";
+                    result.Message = "Item is invalid";
                 }
 
             }
@@ -81,18 +81,18 @@ namespace RecordShop.DataAccess.Repositories
                 var itemToUpdate = _dbSet.Find(id);
                 if (itemToUpdate!=null && MyValidator<T>.IsValid(source))
                 {
-                    var properties = typeof(T).GetProperties();
-                    foreach(var property in properties)
-                    {
-                        if (property.CanWrite && property.Name!="Id")
+                        var properties = typeof(T).GetProperties();
+                        foreach (var property in properties)
                         {
-                            var newValue = property.GetValue(source);
-                            property.SetValue(itemToUpdate, newValue);
+                            if (property.CanWrite && property.Name != "Id")
+                            {
+                                var newValue = property.GetValue(source);
+                                property.SetValue(itemToUpdate, newValue);
+                            }
                         }
-                    }
-                    await _db.SaveChangesAsync();
-                    result.Message = "Item updated";
-                    result.IsSuccess = true;
+                        await _db.SaveChangesAsync();
+                        result.Message = "Item updated";
+                        result.IsSuccess = true;                   
                 }
                 else
                 {

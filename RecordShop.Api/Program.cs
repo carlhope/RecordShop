@@ -8,6 +8,7 @@ using RecordShop.Common.Dto.Music;
 using Microsoft.EntityFrameworkCore;
 using RecordShop.DataAccess;
 using RecordShop.Business.Mapper;
+using Microsoft.AspNetCore.Identity;
 
 namespace RecordShop.Api
 {
@@ -20,6 +21,10 @@ namespace RecordShop.Api
             // Add services to the container.
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
                        options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+            builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
+            options.SignIn.RequireConfirmedAccount = true)
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
             builder.Services.AddAutoMapper
                 (
                 //typeof(GenericMapperProfile<MediaType, RecordPriceDto>).Assembly,

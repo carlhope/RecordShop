@@ -19,7 +19,7 @@ public class ArtistControllerTests
     }
 
     [Test]
-    public async Task GetAllProducts()
+    public async Task GetAllArtists()
     {
         // Arrange
         _artistService.Setup(r => r.GetAllAsync()).ReturnsAsync(new List<ArtistDto>());

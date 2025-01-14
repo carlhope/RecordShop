@@ -11,12 +11,11 @@ namespace RecordShop.DataAccess
 {
     public static class MyValidator<T> where T : class, IEntity
     {
-        public static bool IsValid(T source) {
-        OperationResult result = new OperationResult();
+        public static bool IsValid(T source) 
+        {
         var validationContext = new ValidationContext(source);
         var validationResults = new List<ValidationResult>();
-        bool isValid = Validator.TryValidateObject(source, validationContext, validationResults, true);
-        return isValid;
-    }
+        return Validator.TryValidateObject(source, validationContext, validationResults, true);
+        }
     }
 }
