@@ -21,5 +21,12 @@ namespace RecordShop.Business.Services
             _musicProductRepository = musicProductRepository;
             _mapper = mapper;
         }
+
+        public async Task<Dictionary<AlbumDto, List<MusicProductDto>>?> GetAllByReleaseYear(int year)
+        {
+            var result = await _musicProductRepository.GetAllByReleaseYear(year);
+            Dictionary<AlbumDto, List<MusicProductDto>> mapped = _mapper.Map<Dictionary<AlbumDto,List<MusicProductDto>>>(result);
+            return mapped;
+        }
     }
 }
