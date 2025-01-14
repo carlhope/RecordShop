@@ -19,23 +19,32 @@ namespace RecordShop.Api
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-            builder.Services.AddDbContext<ApplicationDbContext>(options =>
-                       options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+            string connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+            if (connectionString == "InMemory")
+            {
+                builder.Services.AddDbContext<ApplicationDbContext>(options =>
+                           options.UseInMemoryDatabase("Development"));
+            }
+            else
+            {
+                builder.Services.AddDbContext<ApplicationDbContext>(options =>
+                           options.UseSqlServer(builder.Configuration.GetConnectionString(connectionString)));
+            }
             builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
             options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
-            builder.Services.AddAutoMapper
-                (
-                //typeof(GenericMapperProfile<MediaType, RecordPriceDto>).Assembly,
-                typeof(MapperProfile).Assembly
-                );
+            builder.Services.AddAutoMapper(typeof(MapperProfile).Assembly);
 
 
-            builder.Services.AddScoped<IGenericRepository<Album>, AlbumRepository>();
-            builder.Services.AddScoped<IGenericService<Album, AlbumDto>, AlbumService>();
-            builder.Services.AddScoped<IGenericRepository<Artist>, ArtistRepository>();
-            builder.Services.AddScoped<IGenericService<Artist, ArtistDto>, ArtistService>();
+            builder.Services.AddScoped<IAlbumRepository, AlbumRepository>();
+            builder.Services.AddScoped<IAlbumService, AlbumService>();
+            builder.Services.AddScoped<IArtistRepository, ArtistRepository>();
+            builder.Services.AddScoped<IArtistService, ArtistService>();
+            builder.Services.AddScoped<IInventoryRepository, InventoryRepository>();
+            builder.Services.AddScoped<IInventoryService, InventoryService>();
+            builder.Services.AddScoped<IMusicProductRepository, MusicProductRepository>();
+            builder.Services.AddScoped<IMusicProductService, MusicProductService>();
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

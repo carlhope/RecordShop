@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using RecordShop.Business.Services.IServices;
 using RecordShop.Common.Dto.Music;
 using RecordShop.DataAccess.Models.Music;
 using RecordShop.DataAccess.Repositories.IRepository;
@@ -10,12 +11,12 @@ using System.Threading.Tasks;
 
 namespace RecordShop.Business.Services
 {
-    public class ArtistService:GenericService<Artist, ArtistDto>
+    public class ArtistService:GenericService<Artist, ArtistDto>,IArtistService
     {
         public IMapper _mapper;
-        public IGenericRepository<Artist> _repo;
+        public IArtistRepository _repo;
 
-        public ArtistService(IMapper mapper, IGenericRepository<Artist> repo) : base(mapper, repo)
+        public ArtistService(IMapper mapper, IArtistRepository repo) : base(mapper, repo)
         {
             _repo = repo;
             _mapper = mapper;

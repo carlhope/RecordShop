@@ -8,15 +8,10 @@ using System.Threading.Tasks;
 
 namespace RecordShop.DataAccess.Models.Music
 {
-    public class MusicProduct:IEntity
+    public class AlbumGenre : IEntity
     {
         public int Id { get; set; }
-        public DateOnly ReleaseDate { get; set; }
-       
-        public int MusicAlbumId { get; set; }
-        public Album MusicAlbum { get; set; }
-
-        public AlbumMediaType MediaType { get; set; }
-      
+        public int AlbumId { get; set; }
+        public Genre Genre { get; set; }
     }
 }

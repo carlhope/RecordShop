@@ -30,7 +30,7 @@ namespace RecordShop.Tests.RepositoryTests
         public async Task GetAllTestEmptyDb()
         {
             //arrange
-            List<Artist>? artists = await _artistRepository.GetAllAsync();
+            IEnumerable<Artist>? artists = await _artistRepository.GetAllAsync();
             //No data added since _db creation in Setup, therefore should always be empty
             Assert.That(artists.Count(), Is.EqualTo(0));
 
@@ -45,9 +45,9 @@ namespace RecordShop.Tests.RepositoryTests
             };
             _db.Add(Test);
             await _db.SaveChangesAsync();
-            List<Artist>? artists = await _artistRepository.GetAllAsync();
+            IEnumerable<Artist>? artists = await _artistRepository.GetAllAsync();
             //No data added since _db creation in Setup, therefore should always be empty
-            Assert.AreEqual(1, artists.Count);
+            Assert.AreEqual(1, artists.ToList().Count);
 
         }
         [Test]
