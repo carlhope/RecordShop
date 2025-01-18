@@ -70,7 +70,7 @@ namespace RecordShop.Tests.RepositoryTests
                 Title = "Test",
                 Description = "Test",
                 Artist = null,
-                Genres = new List<Genre> { Genre.Pop, Genre.Rap }
+                Genres = new List<AlbumGenre> { new AlbumGenre() { Id = 1, Genre=Genre.Pop,AlbumId=1 } }
 
             };
             ArtistAlbumJunction junction = new ArtistAlbumJunction()

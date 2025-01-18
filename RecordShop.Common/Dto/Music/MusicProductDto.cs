@@ -12,9 +12,11 @@ namespace RecordShop.Common.Dto.Music
         public int Id { get; set; }
         public DateOnly ReleaseDate { get; set; }
         public int MusicAlbumId { get; set; }
+        public AlbumMediaType MediaType { get; set; }
+        //navigation properties
         public AlbumDto? MusicAlbum { get; set; }
 
-        public AlbumMediaType MediaType { get; set; }
+        
 
     }
 }

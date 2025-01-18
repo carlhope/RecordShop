@@ -29,7 +29,12 @@ namespace RecordShop.Api
             {
                 builder.Services.AddDbContext<ApplicationDbContext>(options =>
                            options.UseSqlServer(builder.Configuration.GetConnectionString(connectionString)));
+
             }
+            //var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
+            //           ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+            //builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString));
+
             builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
             options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>()
@@ -46,7 +51,12 @@ namespace RecordShop.Api
             builder.Services.AddScoped<IMusicProductRepository, MusicProductRepository>();
             builder.Services.AddScoped<IMusicProductService, MusicProductService>();
 
-            builder.Services.AddControllers();
+            builder.Services.AddControllers()
+                .AddJsonOptions(options =>
+                {
+                    options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
+                    options.JsonSerializerOptions.WriteIndented = true;
+                });
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();

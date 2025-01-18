@@ -1,4 +1,4 @@
-﻿using RecordShop.DataAccess.Models.Music;
+﻿
 
 namespace RecordShop.Common.Dto.Music
 {
@@ -7,7 +7,8 @@ namespace RecordShop.Common.Dto.Music
         public int Id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
-        public List<ArtistAlbumJunctionDto>? Artist { get; set; }
-        public List<AlbumGenreDto> Genres { get; set; }
+        //navigation properties
+        public List<ArtistAlbumJunctionDto> Artist { get; set; } = [];
+        public List<AlbumGenreDto> Genres { get; set; } = [];
     }
 }

@@ -28,7 +28,7 @@ namespace RecordShop.Business.Services
             var mapped = _mapper.Map<List<AlbumDto>>(result);
             return mapped;
         }
-        public async Task<List<AlbumDto>?> GetAllByGenre(Genre genre)
+        public async Task<List<AlbumDto>?> GetAllByGenre(AlbumGenre genre)
         {
             var result = await _albumRepository.GetAllByGenre(genre);
             var mapped = _mapper.Map<List<AlbumDto>>(result);

@@ -12,6 +12,7 @@ namespace RecordShop.Common.Dto.Music
         public int? Id { get; set; }
         [Required]
         public string Name { get; set; }
-        public List<ArtistAlbumJunctionDto>? MusicRecords { get; set; }
+        //navigation properties
+        public List<ArtistAlbumJunctionDto> MusicRecords { get; set; } = [];
     }
 }

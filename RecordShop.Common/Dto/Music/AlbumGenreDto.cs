@@ -1,11 +1,13 @@
 ﻿using RecordShop.Common.Enums;
 
-namespace RecordShop.DataAccess.Models.Music
+namespace RecordShop.Common.Dto.Music
 {
     public class AlbumGenreDto
     {
         public int Id { get; set; }
         public int AlbumId { get; set; }
         public Genre Genre { get; set; }
+        //navigation properties
+        public AlbumDto? Album { get; set; }
     }
 }

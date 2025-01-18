@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RecordShop.Common.Enums;
 using RecordShop.Common.Models;
+using RecordShop.DataAccess.Migrations;
 using RecordShop.DataAccess.Models.Music;
 using RecordShop.DataAccess.Repositories.IRepository;
 using System;
@@ -43,18 +44,24 @@ namespace RecordShop.DataAccess.Repositories
         {
             return await _db.Albums
                 .Where(x=>x.Artist.Any(a=>a.ArtistId==id))
+                .Include(x=>x.Artist)
+                .Include(x=>x.Genres)
                 .ToListAsync();
         }
-        public async Task<List<Album>?> GetAllByGenre(Genre genre)
+        public async Task<List<Album>?> GetAllByGenre(AlbumGenre genre)
         {
             return await _db.Albums
                 .Where(x => x.Genres.Contains(genre))
+                .Include(x => x.Artist)
+                .Include(x => x.Genres)
                 .ToListAsync();
         }
         public async Task<Album>? GetByAlbumName(string name)
         {
             return await _db.Albums
                 .Where(x => x.Title==name)
+                .Include(x => x.Artist)
+                .Include(x => x.Genres)
                 .FirstOrDefaultAsync();
         }
 

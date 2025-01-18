@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RecordShop.DataAccess;
 
@@ -11,9 +12,11 @@ using RecordShop.DataAccess;
 namespace RecordShop.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250117084005_updateGenre")]
+    partial class updateGenre
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -56,6 +59,9 @@ namespace RecordShop.DataAccess.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Genres")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
@@ -166,7 +172,7 @@ namespace RecordShop.DataAccess.Migrations
             modelBuilder.Entity("RecordShop.DataAccess.Models.Music.AlbumGenre", b =>
                 {
                     b.HasOne("RecordShop.DataAccess.Models.Music.Album", "Album")
-                        .WithMany("Genres")
+                        .WithMany()
                         .HasForeignKey("AlbumId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -207,8 +213,6 @@ namespace RecordShop.DataAccess.Migrations
             modelBuilder.Entity("RecordShop.DataAccess.Models.Music.Album", b =>
                 {
                     b.Navigation("Artist");
-
-                    b.Navigation("Genres");
                 });
 
             modelBuilder.Entity("RecordShop.DataAccess.Models.Music.Artist", b =>

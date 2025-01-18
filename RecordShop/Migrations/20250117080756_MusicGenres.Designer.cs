@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RecordShop.DataAccess;
 
@@ -11,9 +12,11 @@ using RecordShop.DataAccess;
 namespace RecordShop.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250117080756_MusicGenres")]
+    partial class MusicGenres
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -58,6 +61,9 @@ namespace RecordShop.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Genres")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -82,8 +88,6 @@ namespace RecordShop.DataAccess.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("AlbumId");
 
                     b.ToTable("Genres");
                 });
@@ -163,17 +167,6 @@ namespace RecordShop.DataAccess.Migrations
                     b.Navigation("MusicProduct");
                 });
 
-            modelBuilder.Entity("RecordShop.DataAccess.Models.Music.AlbumGenre", b =>
-                {
-                    b.HasOne("RecordShop.DataAccess.Models.Music.Album", "Album")
-                        .WithMany("Genres")
-                        .HasForeignKey("AlbumId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Album");
-                });
-
             modelBuilder.Entity("RecordShop.DataAccess.Models.Music.ArtistAlbumJunction", b =>
                 {
                     b.HasOne("RecordShop.DataAccess.Models.Music.Artist", "Artist")
@@ -207,8 +200,6 @@ namespace RecordShop.DataAccess.Migrations
             modelBuilder.Entity("RecordShop.DataAccess.Models.Music.Album", b =>
                 {
                     b.Navigation("Artist");
-
-                    b.Navigation("Genres");
                 });
 
             modelBuilder.Entity("RecordShop.DataAccess.Models.Music.Artist", b =>

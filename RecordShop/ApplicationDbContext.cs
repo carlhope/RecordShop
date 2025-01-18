@@ -24,5 +24,6 @@ namespace RecordShop.DataAccess
         internal DbSet<Artist> Artists { get; set; }
         internal DbSet<ArtistAlbumJunction> ArtistAlbumJunctions { get; set; }
         internal DbSet<InventoryItem> inventoryItems { get; set; }
+        internal DbSet<AlbumGenre> Genres { get; set; }
     }
 }

@@ -23,7 +23,7 @@ namespace RecordShop.Api.Controllers
                 {
                     return Ok(dto);
                 }
-                else return BadRequest("failed to create new entity");
+                else return BadRequest(result.Message);
 
             }
             return BadRequest("ModelState invalid");
