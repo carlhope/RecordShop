@@ -10,12 +10,12 @@ using System.Threading.Tasks;
 
 namespace RecordShop.DataAccess.Repositories
 {
-    public class ArtistAlbumRepository:IArtistAlbumRepository
+    public class ArtistAlbumRepository:GenericRepository<ArtistAlbumJunction>,IArtistAlbumRepository
     {
         private ApplicationDbContext _db;
         private IArtistRepository _artistRepository;
         private IAlbumRepository _albumRepository;
-        public ArtistAlbumRepository(ApplicationDbContext db, IArtistRepository artistRepository, IAlbumRepository albumRepository)
+        public ArtistAlbumRepository(ApplicationDbContext db, IArtistRepository artistRepository, IAlbumRepository albumRepository):base(db)
         {
             _db = db;
             _artistRepository = artistRepository;

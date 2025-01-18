@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace RecordShop.DataAccess.Repositories.IRepository
 {
-    public interface IArtistAlbumRepository
+    public interface IArtistAlbumRepository:IGenericRepository<ArtistAlbumJunction>
     {
 
         Task<OperationResult> AssignArtistToAlbum(int artistId, int albumId);
