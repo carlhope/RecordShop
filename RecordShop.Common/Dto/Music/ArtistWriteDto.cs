@@ -9,10 +9,9 @@ namespace RecordShop.Common.Dto.Music
 {
     public class ArtistWriteDto
     {
-        public int? Id { get; set; }
         [Required]
         public string Name { get; set; }
-        //navigation properties
-        public List<ArtistAlbumJunctionReadDto> MusicRecords { get; set; } = [];
+
+      
     }
 }

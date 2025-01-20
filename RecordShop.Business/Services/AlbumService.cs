@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace RecordShop.Business.Services
 {
-    public class AlbumService:GenericService<Album, AlbumReadDto>, IAlbumService
+    public class AlbumService:GenericService<Album, AlbumReadDto, AlbumWriteDto>, IAlbumService
     {
         public IMapper _mapper;
         public IAlbumRepository _albumRepository;

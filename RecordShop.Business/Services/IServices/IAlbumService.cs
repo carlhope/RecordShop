@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace RecordShop.Business.Services.IServices
 {
-    public interface IAlbumService : IGenericService<Album, AlbumReadDto>
+    public interface IAlbumService : IGenericService<Album, AlbumReadDto, AlbumWriteDto>
     {
         Task<List<AlbumReadDto>?> GetAllByArtist(int id);
         Task<List<AlbumReadDto>?> GetAllByGenre(AlbumGenre genre);

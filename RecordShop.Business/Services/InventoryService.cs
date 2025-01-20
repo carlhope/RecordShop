@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace RecordShop.Business.Services
 {
-    public class InventoryService : GenericService<InventoryItem, InventoryItemReadDto>, IInventoryService
+    public class InventoryService : GenericService<InventoryItem, InventoryItemReadDto, InventoryItemWriteDto>, IInventoryService
     {
         private readonly IInventoryRepository _inventoryRepository;
         public InventoryService(IMapper mapper, IInventoryRepository inventoryRepository) : base(mapper, inventoryRepository)

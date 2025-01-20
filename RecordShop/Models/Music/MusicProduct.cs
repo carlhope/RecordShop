@@ -16,7 +16,7 @@ namespace RecordShop.DataAccess.Models.Music
         public int MusicAlbumId { get; set; }
         public AlbumMediaType MediaType { get; set; }
         //navigation properties
-        public Album? MusicAlbum { get; set; }
+        public Album MusicAlbum { get; set; }
 
         
       

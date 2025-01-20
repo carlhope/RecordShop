@@ -8,7 +8,7 @@ namespace RecordShop.Api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class InventoryController : GenericController<InventoryItem, InventoryItemReadDto>
+    public class InventoryController : GenericController<InventoryItem, InventoryItemReadDto, InventoryItemWriteDto>
     {
         private readonly IInventoryService _inventoryService;
 

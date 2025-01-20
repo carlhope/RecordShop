@@ -4,17 +4,17 @@ using RecordShop.DataAccess.Interfaces;
 
 namespace RecordShop.Api.Controllers
 {
-    public class GenericController <T, DTO> : ControllerBase where T : class, IEntity where DTO : class
+    public class GenericController <T, ReadDTO, WriteDTO> : ControllerBase where T : class, IEntity where ReadDTO : class where WriteDTO : class
     {
-        public IGenericService<T, DTO> _genericService;
+        public IGenericService<T, ReadDTO, WriteDTO> _genericService;
 
-        public GenericController(IGenericService<T, DTO> genericService)
+        public GenericController(IGenericService<T, ReadDTO, WriteDTO> genericService)
         {
             _genericService = genericService;
         }
 
         [HttpPost]
-        public virtual async Task<IActionResult> Create(DTO dto)
+        public virtual async Task<IActionResult> Create(WriteDTO dto)
         {
             if (ModelState.IsValid)
             {
@@ -29,7 +29,7 @@ namespace RecordShop.Api.Controllers
             return BadRequest("ModelState invalid");
         }
         [HttpPut("{id}")]
-        public virtual async Task<IActionResult> Update(int id, DTO dto)
+        public virtual async Task<IActionResult> Update(int id, WriteDTO dto)
         {
             if (ModelState.IsValid)
             {
