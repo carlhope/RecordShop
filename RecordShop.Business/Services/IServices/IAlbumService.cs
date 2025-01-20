@@ -11,10 +11,10 @@ using System.Threading.Tasks;
 
 namespace RecordShop.Business.Services.IServices
 {
-    public interface IAlbumService : IGenericService<Album, AlbumDto>
+    public interface IAlbumService : IGenericService<Album, AlbumReadDto>
     {
-        Task<List<AlbumDto>?> GetAllByArtist(int id);
-        Task<List<AlbumDto>?> GetAllByGenre(AlbumGenre genre);
-        Task<AlbumDto>? GetByAlbumName(string name);
+        Task<List<AlbumReadDto>?> GetAllByArtist(int id);
+        Task<List<AlbumReadDto>?> GetAllByGenre(AlbumGenre genre);
+        Task<AlbumReadDto>? GetByAlbumName(string name);
     }
 }

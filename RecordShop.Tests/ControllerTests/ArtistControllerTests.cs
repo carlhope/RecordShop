@@ -22,7 +22,7 @@ public class ArtistControllerTests
     public async Task GetAllArtists()
     {
         // Arrange
-        _artistService.Setup(r => r.GetAllAsync()).ReturnsAsync(new List<ArtistDto>());
+        _artistService.Setup(r => r.GetAllAsync()).ReturnsAsync(new List<ArtistReadDto>());
 
         // Act
         var result = await _controller.GetAll();
@@ -31,8 +31,8 @@ public class ArtistControllerTests
         _artistService.Verify(r => r.GetAllAsync(), Times.Once());
         Assert.IsInstanceOf<OkObjectResult>(result);
         var okResult = result as OkObjectResult;
-        Assert.IsInstanceOf<IEnumerable<ArtistDto>>(okResult.Value);
-        Assert.IsAssignableFrom<List<ArtistDto>>(okResult.Value);
+        Assert.IsInstanceOf<IEnumerable<ArtistReadDto>>(okResult.Value);
+        Assert.IsAssignableFrom<List<ArtistReadDto>>(okResult.Value);
 
     }
 }

@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace RecordShop.Business.Services
 {
-    public class MusicProductService:GenericService<MusicProduct, MusicProductDto>, IMusicProductService
+    public class MusicProductService:GenericService<MusicProduct, MusicProductReadDto>, IMusicProductService
     {
         public IMapper _mapper;
         public IMusicProductRepository _musicProductRepository;
@@ -22,10 +22,10 @@ namespace RecordShop.Business.Services
             _mapper = mapper;
         }
 
-        public async Task<Dictionary<AlbumDto, List<MusicProductDto>>?> GetAllByReleaseYear(int year)
+        public async Task<Dictionary<AlbumReadDto, List<MusicProductReadDto>>?> GetAllByReleaseYear(int year)
         {
             var result = await _musicProductRepository.GetAllByReleaseYear(year);
-            Dictionary<AlbumDto, List<MusicProductDto>> mapped = _mapper.Map<Dictionary<AlbumDto,List<MusicProductDto>>>(result);
+            Dictionary<AlbumReadDto, List<MusicProductReadDto>> mapped = _mapper.Map<Dictionary<AlbumReadDto,List<MusicProductReadDto>>>(result);
             return mapped;
         }
     }

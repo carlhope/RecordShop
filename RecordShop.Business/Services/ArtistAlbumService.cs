@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace RecordShop.Business.Services
 {
-    public class ArtistAlbumService:GenericService<ArtistAlbumJunction, ArtistAlbumJunctionDto>, IArtistAlbumService
+    public class ArtistAlbumService:GenericService<ArtistAlbumJunction, ArtistAlbumJunctionReadDto>, IArtistAlbumService
     {
         public IMapper _mapper;
         public IArtistAlbumRepository _repo;

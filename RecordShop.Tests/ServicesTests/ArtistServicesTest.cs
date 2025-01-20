@@ -23,7 +23,7 @@ namespace RecordShop.Tests.ServicesTests
         public void SetUp()
         {
             var config = new MapperConfiguration(cfg => {
-                cfg.CreateMap<Artist, ArtistDto>().ReverseMap();
+                cfg.CreateMap<Artist, ArtistReadDto>().ReverseMap();
             });
             _mapper = config.CreateMapper();
             artistService = new ArtistService(_mapper, repo.Object);
@@ -37,7 +37,7 @@ namespace RecordShop.Tests.ServicesTests
             var result = await artistService.GetAllAsync();
             //assert
             repo.Verify(r => r.GetAllAsync(), Times.Once());
-            Assert.That(result, Is.TypeOf<List<ArtistDto>>());
+            Assert.That(result, Is.TypeOf<List<ArtistReadDto>>());
         }
         [Test]
         public async Task GetByIdAsync()
@@ -48,12 +48,12 @@ namespace RecordShop.Tests.ServicesTests
             var result = await artistService.GetByIdAsync(8);
             //assert
             repo.Verify(r => r.GetByIdAsync(8), Times.Once());
-            Assert.That(result, Is.TypeOf<ArtistDto>());
+            Assert.That(result, Is.TypeOf<ArtistReadDto>());
         }
         [Test]
         public async Task CreateAsync()
         {
-            ArtistDto artistDto = new ArtistDto()
+            ArtistReadDto artistDto = new ArtistReadDto()
             {
                 Name = "Test"
             };
@@ -67,7 +67,7 @@ namespace RecordShop.Tests.ServicesTests
         [Test]
         public async Task UpdateAsync()
         {
-            ArtistDto artistDto = new ArtistDto()
+            ArtistReadDto artistDto = new ArtistReadDto()
             {
                 Name = "Test"
             };

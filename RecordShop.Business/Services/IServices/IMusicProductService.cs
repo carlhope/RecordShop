@@ -10,8 +10,8 @@ using System.Threading.Tasks;
 
 namespace RecordShop.Business.Services.IServices
 {
-    public interface IMusicProductService : IGenericService<MusicProduct, MusicProductDto>
+    public interface IMusicProductService : IGenericService<MusicProduct, MusicProductReadDto>
     {
-        Task<Dictionary<AlbumDto, List<MusicProductDto>>?> GetAllByReleaseYear(int year);
+        Task<Dictionary<AlbumReadDto, List<MusicProductReadDto>>?> GetAllByReleaseYear(int year);
     }
 }

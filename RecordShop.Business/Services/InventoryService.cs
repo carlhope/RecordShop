@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace RecordShop.Business.Services
 {
-    public class InventoryService : GenericService<InventoryItem, InventoryItemDto>, IInventoryService
+    public class InventoryService : GenericService<InventoryItem, InventoryItemReadDto>, IInventoryService
     {
         private readonly IInventoryRepository _inventoryRepository;
         public InventoryService(IMapper mapper, IInventoryRepository inventoryRepository) : base(mapper, inventoryRepository)
@@ -19,10 +19,10 @@ namespace RecordShop.Business.Services
             _inventoryRepository = inventoryRepository;
         }
 
-        public async Task<List<InventoryItemDto>> GetAllInStock()
+        public async Task<List<InventoryItemReadDto>> GetAllInStock()
         {
             var data = await _inventoryRepository.GetAllInStock();
-            return _mapper.Map<List<InventoryItemDto>>(data);
+            return _mapper.Map<List<InventoryItemReadDto>>(data);
         }
     }
 }

@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace RecordShop.Business.Services
 {
-    public class AlbumService:GenericService<Album, AlbumDto>, IAlbumService
+    public class AlbumService:GenericService<Album, AlbumReadDto>, IAlbumService
     {
         public IMapper _mapper;
         public IAlbumRepository _albumRepository;
@@ -22,22 +22,22 @@ namespace RecordShop.Business.Services
             _albumRepository = albumRepository;
             _mapper = mapper;
         }
-        public async Task<List<AlbumDto>?> GetAllByArtist(int id)
+        public async Task<List<AlbumReadDto>?> GetAllByArtist(int id)
         {
            var result = await _albumRepository.GetAllByArtist(id);
-            var mapped = _mapper.Map<List<AlbumDto>>(result);
+            var mapped = _mapper.Map<List<AlbumReadDto>>(result);
             return mapped;
         }
-        public async Task<List<AlbumDto>?> GetAllByGenre(AlbumGenre genre)
+        public async Task<List<AlbumReadDto>?> GetAllByGenre(AlbumGenre genre)
         {
             var result = await _albumRepository.GetAllByGenre(genre);
-            var mapped = _mapper.Map<List<AlbumDto>>(result);
+            var mapped = _mapper.Map<List<AlbumReadDto>>(result);
             return mapped;
         }
-        public async Task<AlbumDto>? GetByAlbumName(string name)
+        public async Task<AlbumReadDto>? GetByAlbumName(string name)
         {
             var result = await _albumRepository.GetByAlbumName(name);
-            var mapped = _mapper.Map<AlbumDto>(result);
+            var mapped = _mapper.Map<AlbumReadDto>(result);
             return mapped;
         }
     }

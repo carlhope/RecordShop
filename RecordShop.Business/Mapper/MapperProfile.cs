@@ -15,12 +15,12 @@ namespace RecordShop.Business.Mapper
     {
         public MapperProfile()
         {
-            CreateMap<MusicProduct, MusicProductDto>().ReverseMap();
-            CreateMap<Album, AlbumDto>().ReverseMap();
-            CreateMap<Artist, ArtistDto>().ReverseMap();
-            CreateMap<AlbumGenre, AlbumGenreDto>().ReverseMap();
-            CreateMap<InventoryItem, InventoryItemDto>().ReverseMap();
-            CreateMap<ArtistAlbumJunction, ArtistAlbumJunctionDto>().ReverseMap();
+            CreateMap<MusicProduct, MusicProductReadDto>().ReverseMap();
+            CreateMap<Album, AlbumReadDto>().ReverseMap();
+            CreateMap<Artist, ArtistReadDto>().ReverseMap();
+            CreateMap<AlbumGenre, AlbumGenreReadDto>().ReverseMap();
+            CreateMap<InventoryItem, InventoryItemReadDto>().ReverseMap();
+            CreateMap<ArtistAlbumJunction, ArtistAlbumJunctionReadDto>().ReverseMap();
         }
     }
 }

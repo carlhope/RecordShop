@@ -3,7 +3,7 @@ using RecordShop.Common.Enums;
 
 namespace RecordShop.Common.Dto.Inventory
 {
-    public class InventoryItemDto
+    public class InventoryItemReadDto
     {
         public int Id { get; set; }
         public int MusicProductId {  get; set; }
@@ -11,6 +11,6 @@ namespace RecordShop.Common.Dto.Inventory
         public int Quantity { get; set; }
         public decimal Price { get; set; }
         //navigation properties
-        public MusicProductDto? MusicProduct { get; set; }
+        public MusicProductReadDto? MusicProduct { get; set; }
     }
 }
