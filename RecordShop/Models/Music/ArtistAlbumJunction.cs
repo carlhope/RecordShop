@@ -14,7 +14,7 @@ namespace RecordShop.DataAccess.Models.Music
         
         public int MusicRecordId { get; set; }
         //navigation properties
-        public Artist? Artist { get; set; }
-        public Album? MusicRecord { get; set; }
+        public Artist Artist { get; set; }
+        public Album MusicRecord { get; set; }
     }
 }

@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace RecordShop.Business.Services.IServices
 {
-    public interface IGenericService<T, DTO> where T : class, IEntity where DTO : class
+    public interface IGenericService<T, ReadDTO, WriteDTO> where T : class, IEntity where ReadDTO : class where WriteDTO : class
     {
-         Task<IEnumerable<DTO>> GetAllAsync();
-         Task<DTO> GetByIdAsync(int id);
-         Task<OperationResult> CreateAsync(DTO dto);
-         Task<OperationResult> UpdateAsync(int id, DTO dto);
+         Task<IEnumerable<ReadDTO>> GetAllAsync();
+         Task<ReadDTO> GetByIdAsync(int id);
+         Task<OperationResult> CreateAsync(WriteDTO dto);
+         Task<OperationResult> UpdateAsync(int id, WriteDTO dto);
          Task<OperationResult> DeleteAsync(int id);
     }
 }

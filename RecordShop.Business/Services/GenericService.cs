@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace RecordShop.Business.Services
 {
-    public class GenericService<T, DTO> : IGenericService<T, DTO> where T : class, IEntity where DTO : class
+    public class GenericService<T, ReadDTO,WriteDTO> : IGenericService<T, ReadDTO, WriteDTO> where T : class, IEntity where ReadDTO : class where WriteDTO : class
     {
         public IMapper _mapper;
         public IGenericRepository<T> _repo;
@@ -21,7 +21,7 @@ namespace RecordShop.Business.Services
             _repo = repo;
             _mapper = mapper;
         }
-        public virtual async Task<OperationResult> CreateAsync(DTO dto)
+        public virtual async Task<OperationResult> CreateAsync(WriteDTO dto)
         {
             OperationResult result = new();
             try
@@ -53,21 +53,21 @@ namespace RecordShop.Business.Services
             return result;
         }
 
-        public virtual async Task<IEnumerable<DTO>> GetAllAsync()
+        public virtual async Task<IEnumerable<ReadDTO>> GetAllAsync()
         {
             var data = await _repo.GetAllAsync();
-            var results = _mapper.Map<List<DTO>>(data);
+            var results = _mapper.Map<List<ReadDTO>>(data);
             return results;
         }
 
-        public virtual async Task<DTO> GetByIdAsync(int id)
+        public virtual async Task<ReadDTO> GetByIdAsync(int id)
         {
             var data = await _repo.GetByIdAsync(id);
-            var results = _mapper.Map<DTO>(data);
+            var results = _mapper.Map<ReadDTO>(data);
             return results;
         }
 
-        public virtual async Task<OperationResult> UpdateAsync(int id, DTO dto)
+        public virtual async Task<OperationResult> UpdateAsync(int id, WriteDTO dto)
         {
             OperationResult result = new OperationResult();
             try

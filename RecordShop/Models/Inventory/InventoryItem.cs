@@ -16,6 +16,6 @@ namespace RecordShop.DataAccess.Models.Inventory
         public int Quantity { get; set; }
         public decimal Price { get; set; }
         //navigation properties
-        public MusicProduct? MusicProduct { get; set; }
+        public MusicProduct MusicProduct { get; set; }
     }
 }

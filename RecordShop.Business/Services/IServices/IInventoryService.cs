@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace RecordShop.Business.Services.IServices
 {
-    public interface IInventoryService:IGenericService<InventoryItem, InventoryItemReadDto>
+    public interface IInventoryService:IGenericService<InventoryItem, InventoryItemReadDto, InventoryItemWriteDto>
     {
         Task<List<InventoryItemReadDto>> GetAllInStock();
     }

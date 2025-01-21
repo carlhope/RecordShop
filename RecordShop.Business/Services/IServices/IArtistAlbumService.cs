@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace RecordShop.Business.Services.IServices
 {
-    public interface IArtistAlbumService:IGenericService<ArtistAlbumJunction, ArtistAlbumJunctionReadDto>
+    public interface IArtistAlbumService:IGenericService<ArtistAlbumJunction, ArtistAlbumJunctionReadDto, ArtistAlbumJunctionWriteDto>
     {
     }
 }
