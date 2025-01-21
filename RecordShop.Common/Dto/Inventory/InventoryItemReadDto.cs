@@ -10,6 +10,6 @@ namespace RecordShop.Common.Dto.Inventory
         public int Quantity { get; set; }
         public decimal Price { get; set; }
         //navigation properties
-        public MusicProductReadDto? MusicProduct { get; set; }
+        public MusicProductReadDto MusicProduct { get; set; }
     }
 }

@@ -7,6 +7,6 @@ namespace RecordShop.Common.Dto.Music
         public int Id { get; set; }
         public Genre Genre { get; set; }
         //navigation properties
-        public AlbumReadDto? Album { get; set; }
+        public AlbumReadDto Album { get; set; }
     }
 }

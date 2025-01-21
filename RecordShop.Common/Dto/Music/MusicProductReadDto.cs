@@ -13,7 +13,7 @@ namespace RecordShop.Common.Dto.Music
         public DateOnly ReleaseDate { get; set; }
         public AlbumMediaType MediaType { get; set; }
         //navigation properties
-        public AlbumReadDto? MusicAlbum { get; set; }
+        public AlbumReadDto MusicAlbum { get; set; }
 
         
 
