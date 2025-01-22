@@ -24,18 +24,20 @@ namespace RecordShop.DataAccess.Repositories
         public override async Task<IEnumerable<Album>> GetAllAsync()
         {
             var result = await _db.Albums
-                .Include(a => a.Artist)
+                .Include(a => a.ArtistJunction)
                 .ThenInclude(a => a.Artist)
+                .Include(g=>g.Genres)
                 .ToListAsync();
             return result;
         }
-        public override Task<Album?> GetByIdAsync(int id)
+        public override async Task<Album?> GetByIdAsync(int id)
         {
 
-            return _db.Albums
-                .Include(a => a.Artist)
+            return await _db.Albums
+                .Include(a => a.ArtistJunction)
                 .ThenInclude(a => a.Artist)
                 .Where(a => a.Id == id)
+                .Include(g=>g.Genres)
                 .FirstOrDefaultAsync();
 
 
@@ -43,24 +45,29 @@ namespace RecordShop.DataAccess.Repositories
      public async Task<List<Album>?> GetAllByArtist(int id)
         {
             return await _db.Albums
-                .Where(x=>x.Artist.Any(a=>a.ArtistId==id))
-                .Include(x=>x.Artist)
+                .Where(x=>x.ArtistJunction.Any(a=>a.ArtistId==id))
+                .Include(x=>x.ArtistJunction)
                 .Include(x=>x.Genres)
                 .ToListAsync();
         }
-        public async Task<List<Album>?> GetAllByGenre(AlbumGenre genre)
+        public async Task<List<Album>?> GetAllByGenre(string genre)
         {
-            return await _db.Albums
-                .Where(x => x.Genres.Contains(genre))
-                .Include(x => x.Artist)
-                .Include(x => x.Genres)
-                .ToListAsync();
+            if (Enum.TryParse(genre, out Genre result))
+            {
+                return await _db.Albums
+                    .Where(x => x.Genres.Any(g => g.Genre == result))
+                    .Include(x => x.ArtistJunction)
+                    .Include(x => x.Genres)
+                    .ToListAsync();
+            }
+            else return new List<Album>();
         }
-        public async Task<Album>? GetByAlbumName(string name)
+        public async Task<Album?> GetByAlbumName(string name)
         {
             return await _db.Albums
                 .Where(x => x.Title==name)
-                .Include(x => x.Artist)
+                .Include(x => x.ArtistJunction)
+                .ThenInclude(a=>a.Artist)
                 .Include(x => x.Genres)
                 .FirstOrDefaultAsync();
         }

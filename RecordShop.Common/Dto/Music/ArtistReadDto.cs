@@ -13,6 +13,6 @@ namespace RecordShop.Common.Dto.Music
         [Required]
         public string Name { get; set; }
         //navigation properties
-        public List<ArtistAlbumJunctionReadDto> MusicRecords { get; set; }
+        public List<ArtistAlbumJunctionReadDto> AlbumJunction { get; set; }
     }
 }

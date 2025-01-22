@@ -14,7 +14,7 @@ namespace RecordShop.Business.Services.IServices
     public interface IAlbumService : IGenericService<Album, AlbumReadDto, AlbumWriteDto>
     {
         Task<List<AlbumReadDto>?> GetAllByArtist(int id);
-        Task<List<AlbumReadDto>?> GetAllByGenre(AlbumGenre genre);
+        Task<List<AlbumReadDto>?> GetAllByGenre(string genre);
         Task<AlbumReadDto>? GetByAlbumName(string name);
     }
 }

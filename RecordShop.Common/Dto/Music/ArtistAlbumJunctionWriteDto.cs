@@ -3,7 +3,7 @@
     public class ArtistAlbumJunctionWriteDto
     {
         public int ArtistId { get; set; }
-        public int MusicRecordId { get; set; }
+        public int AlbumId { get; set; }
 
     }
 }

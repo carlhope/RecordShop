@@ -14,6 +14,6 @@ namespace RecordShop.DataAccess.Models.Music
         [MinLength(5)]
         public string Name { get; set; }
         //navigation properties
-        public List<ArtistAlbumJunction> MusicRecords { get; set; }
+        public List<ArtistAlbumJunction> AlbumJunction { get; set; }
     }
 }

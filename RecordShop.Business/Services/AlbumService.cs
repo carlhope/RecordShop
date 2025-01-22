@@ -28,7 +28,7 @@ namespace RecordShop.Business.Services
             var mapped = _mapper.Map<List<AlbumReadDto>>(result);
             return mapped;
         }
-        public async Task<List<AlbumReadDto>?> GetAllByGenre(AlbumGenre genre)
+        public async Task<List<AlbumReadDto>?> GetAllByGenre(string genre)
         {
             var result = await _albumRepository.GetAllByGenre(genre);
             var mapped = _mapper.Map<List<AlbumReadDto>>(result);
@@ -37,6 +37,18 @@ namespace RecordShop.Business.Services
         public async Task<AlbumReadDto>? GetByAlbumName(string name)
         {
             var result = await _albumRepository.GetByAlbumName(name);
+            var mapped = _mapper.Map<AlbumReadDto>(result);
+            return mapped;
+        }
+        public override async Task<IEnumerable<AlbumReadDto>> GetAllAsync()
+        {
+            var result = await _albumRepository.GetAllAsync();
+            var mapped = _mapper.Map<List<AlbumReadDto>>(result);
+            return mapped;
+        }
+        public override async Task<AlbumReadDto> GetByIdAsync(int Id)
+        {
+            var result = await _albumRepository.GetByIdAsync(Id);
             var mapped = _mapper.Map<AlbumReadDto>(result);
             return mapped;
         }

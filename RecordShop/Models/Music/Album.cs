@@ -14,7 +14,7 @@ namespace RecordShop.DataAccess.Models.Music
         public string Title { get; set; }
         public string Description { get; set; }
         //navigation properties
-        public List<ArtistAlbumJunction> Artist { get; set; }
+        public List<ArtistAlbumJunction> ArtistJunction { get; set; }
         public List<AlbumGenre> Genres { get; set; }
     }
 }

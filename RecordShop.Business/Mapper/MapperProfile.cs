@@ -15,21 +15,31 @@ namespace RecordShop.Business.Mapper
     {
         public MapperProfile()
         {
-            //read
-            CreateMap<MusicProduct, MusicProductReadDto>().ReverseMap();
-            CreateMap<Album, AlbumReadDto>().ReverseMap();
-            CreateMap<Artist, ArtistReadDto>().ReverseMap();
-            CreateMap<AlbumGenre, AlbumGenreReadDto>().ReverseMap();
-            CreateMap<InventoryItem, InventoryItemReadDto>().ReverseMap();
+            //artistAlbumJunction
             CreateMap<ArtistAlbumJunction, ArtistAlbumJunctionReadDto>().ReverseMap();
-
-            //write
-            CreateMap<MusicProduct, MusicProductWriteDto>().ReverseMap();
-            CreateMap<Album, AlbumWriteDto>().ReverseMap();
-            CreateMap<Artist, ArtistWriteDto>().ReverseMap();
-            CreateMap<AlbumGenre, AlbumGenreWriteDto>().ReverseMap();
-            CreateMap<InventoryItem, InventoryItemWriteDto>().ReverseMap();
             CreateMap<ArtistAlbumJunction, ArtistAlbumJunctionWriteDto>().ReverseMap();
+            //music product
+            CreateMap<MusicProduct, MusicProductReadDto>().ReverseMap();
+            CreateMap<MusicProduct, MusicProductWriteDto>().ReverseMap();
+            //album
+            CreateMap<Album, AlbumReadDto>().ReverseMap();
+            CreateMap<Album, AlbumWriteDto>().ReverseMap();
+            //artist
+            CreateMap<Artist, ArtistReadDto>().ReverseMap();
+            CreateMap<Artist, ArtistWriteDto>().ReverseMap();
+            //albumGenre
+            CreateMap<AlbumGenre, AlbumGenreReadDto>().ReverseMap();
+            CreateMap<AlbumGenre, AlbumGenreWriteDto>().ReverseMap();
+            //inventory
+            CreateMap<InventoryItem, InventoryItemReadDto>().ReverseMap();
+            CreateMap<InventoryItem, InventoryItemWriteDto>().ReverseMap();
+            
+
+
+
+
+
+
         }
     }
 }

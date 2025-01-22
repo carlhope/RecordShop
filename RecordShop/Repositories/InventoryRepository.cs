@@ -24,7 +24,8 @@ namespace RecordShop.DataAccess.Repositories
                  .Where(x => x.Quantity > 0)
                  .Include(x => x.MusicProduct)
                  .ThenInclude(x => x.MusicAlbum)
-                 .ThenInclude(x => x.Artist)
+                 .ThenInclude(x => x.ArtistJunction)
+                 .ThenInclude(x=>x.Artist)
                  .ToListAsync();
 
         }

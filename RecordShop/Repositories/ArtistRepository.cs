@@ -17,5 +17,24 @@ namespace RecordShop.DataAccess.Repositories
         {
             _db = db;
         }
+        public override async Task<IEnumerable<Artist>> GetAllAsync()
+        {
+            var result = await _db.Artists
+                .Include(a => a.AlbumJunction)
+                .ThenInclude(a => a.Album)
+                .ToListAsync();
+            return result;
+        }
+        public override async Task<Artist?> GetByIdAsync(int id)
+        {
+
+            return await _db.Artists
+                .Include(a => a.AlbumJunction)
+                .ThenInclude(a => a.Album)
+                .Where(a => a.Id == id)
+                .FirstOrDefaultAsync();
+
+
+        }
     }
 }

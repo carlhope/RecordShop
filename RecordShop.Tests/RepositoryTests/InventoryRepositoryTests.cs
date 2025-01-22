@@ -62,21 +62,21 @@ namespace RecordShop.Tests.RepositoryTests
             {
                 Id = 1,
                 Name = "Test",
-                MusicRecords = []
+                AlbumJunction = []
             };
             Album album = new Album()
             {
                 Id = 1,
                 Title = "Test",
                 Description = "Test",
-                Artist = null,
+                ArtistJunction = null,
                 Genres = new List<AlbumGenre> { new AlbumGenre() { Id = 1, Genre=Genre.Pop,AlbumId=1 } }
 
             };
             ArtistAlbumJunction junction = new ArtistAlbumJunction()
             {
                 Artist = artist,
-                MusicRecord = album,
+                Album = album,
             };
             MusicProduct musicProduct = new MusicProduct()
             {

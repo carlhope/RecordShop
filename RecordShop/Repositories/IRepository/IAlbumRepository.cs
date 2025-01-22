@@ -12,7 +12,7 @@ namespace RecordShop.DataAccess.Repositories.IRepository
     public interface IAlbumRepository : IGenericRepository<Album>
     {
         Task<List<Album>?> GetAllByArtist(int id);
-        Task<List<Album>?> GetAllByGenre(AlbumGenre genre);
-        Task<Album>? GetByAlbumName(string name);
+        Task<List<Album>?> GetAllByGenre(string genre);
+        Task<Album?> GetByAlbumName(string name);
     }
 }

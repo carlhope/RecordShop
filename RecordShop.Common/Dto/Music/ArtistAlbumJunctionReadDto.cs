@@ -5,7 +5,7 @@
         public int Id { get; set; }
         //navigation properties
         public ArtistReadDto Artist { get; set; }
-        public AlbumReadDto MusicRecord { get; set; }
+        public AlbumReadDto Album { get; set; }
 
     }
 }

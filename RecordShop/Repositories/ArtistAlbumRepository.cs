@@ -36,7 +36,7 @@ namespace RecordShop.DataAccess.Repositories
                 ArtistAlbumJunction artistAlbum = new ArtistAlbumJunction()
                 {
                     ArtistId = artistId,
-                    MusicRecordId = albumId,
+                    AlbumId = albumId,
                 };
                 _db.ArtistAlbumJunctions.Add(artistAlbum);
                 await _db.SaveChangesAsync();
@@ -87,7 +87,7 @@ namespace RecordShop.DataAccess.Repositories
         private async Task <ArtistAlbumJunction> GetJunction(int artistId, int albumId)
         {
             //find entry that contains both
-             return await _db.ArtistAlbumJunctions.Where(x=>x.ArtistId == artistId && x.MusicRecordId==albumId).FirstOrDefaultAsync();
+             return await _db.ArtistAlbumJunctions.Where(x=>x.ArtistId == artistId && x.AlbumId==albumId).FirstOrDefaultAsync();
           
             
         }

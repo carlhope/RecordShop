@@ -6,5 +6,6 @@ namespace RecordShop.Common.Dto.Music
     {
         public string Title { get; set; }
         public string Description { get; set; }
+        public List<AlbumGenreWriteDto>? Genres { get; set; }
     }
 }

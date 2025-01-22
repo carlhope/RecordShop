@@ -94,7 +94,7 @@ namespace RecordShop.DataAccess.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_ArtistAlbumJunctions_MusicRecordId",
                 table: "ArtistAlbumJunctions",
-                column: "MusicRecordId");
+                column: "AlbumId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_MusicProducts_MusicAlbumId",

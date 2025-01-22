@@ -74,14 +74,14 @@ namespace RecordShop.DataAccess.Migrations
                     b.Property<int>("ArtistId")
                         .HasColumnType("int");
 
-                    b.Property<int>("MusicRecordId")
+                    b.Property<int>("AlbumId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("ArtistId");
 
-                    b.HasIndex("MusicRecordId");
+                    b.HasIndex("AlbumId");
 
                     b.ToTable("ArtistAlbumJunctions");
                 });
@@ -121,15 +121,15 @@ namespace RecordShop.DataAccess.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("RecordShop.DataAccess.Models.Music.Album", "MusicRecord")
+                    b.HasOne("RecordShop.DataAccess.Models.Music.Album", "Album")
                         .WithMany("Artist")
-                        .HasForeignKey("MusicRecordId")
+                        .HasForeignKey("AlbumId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Artist");
 
-                    b.Navigation("MusicRecord");
+                    b.Navigation("Album");
                 });
 
             modelBuilder.Entity("RecordShop.DataAccess.Models.Music.MusicProduct", b =>
