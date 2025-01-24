@@ -1,6 +1,7 @@
 ﻿using RecordShop.Common.Dto.Inventory;
 using RecordShop.Common.Dto.Music;
 using RecordShop.Common.Enums;
+using RecordShop.Common.Models;
 using RecordShop.DataAccess.Models.Inventory;
 using RecordShop.DataAccess.Models.Music;
 using System;
