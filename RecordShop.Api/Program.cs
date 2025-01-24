@@ -19,8 +19,9 @@ namespace RecordShop.Api
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
+            var environment = builder.Configuration.GetValue<string>("ASPNETCORE_ENVIRONMENT");
             string connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-            if (connectionString == "InMemory")
+            if (environment==Environments.Development)
             {
                 builder.Services.AddDbContext<ApplicationDbContext>(options =>
                            options.UseInMemoryDatabase("Development"));
