@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using RecordShop.Business.Services.IServices;
 using RecordShop.Common.Models;
 using RecordShop.DataAccess.Interfaces;
@@ -35,8 +36,8 @@ namespace RecordShop.Business.Services
             }
             return result;
         }
-
-        public virtual async Task<OperationResult> DeleteAsync(int id)
+        
+        public virtual async Task<OperationResult> DeleteAsync([FromBody] int id)
         {
             OperationResult result = new();
             try

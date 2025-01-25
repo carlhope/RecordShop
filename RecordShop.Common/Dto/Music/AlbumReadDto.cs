@@ -8,7 +8,7 @@ namespace RecordShop.Common.Dto.Music
         public string Title { get; set; }
         public string Description { get; set; }
         //navigation properties
-        public List<ArtistAlbumJunctionReadDto> ArtistJunction { get; set; }
+        public List<ArtistAlbumJunctionReadDto> ArtistJunction { get; set; } = new List<ArtistAlbumJunctionReadDto>();
         public List<AlbumGenreReadDto> Genres { get; set; }
     }
 }

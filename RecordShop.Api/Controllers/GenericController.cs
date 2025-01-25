@@ -57,7 +57,7 @@ namespace RecordShop.Api.Controllers
 
         }
         [HttpDelete]
-        public virtual async Task<IActionResult> Delete(int id)
+        public virtual async Task<IActionResult> Delete([FromBody]int id)
         {
             var result = await _genericService.DeleteAsync(id);
             if (result.IsSuccess)
