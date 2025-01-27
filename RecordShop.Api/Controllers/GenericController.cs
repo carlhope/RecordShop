@@ -29,7 +29,7 @@ namespace RecordShop.Api.Controllers
             return BadRequest("ModelState invalid");
         }
         [HttpPut("{id}")]
-        public virtual async Task<IActionResult> Update(int id, WriteDTO dto)
+        public virtual async Task<IActionResult> Update(int id,[FromBody] WriteDTO dto)
         {
             if (ModelState.IsValid)
             {
@@ -56,8 +56,8 @@ namespace RecordShop.Api.Controllers
             return NotFound("No results matching Id");
 
         }
-        [HttpDelete]
-        public virtual async Task<IActionResult> Delete([FromBody]int id)
+        [HttpDelete("{id}")]
+        public virtual async Task<IActionResult> Delete(int id)
         {
             var result = await _genericService.DeleteAsync(id);
             if (result.IsSuccess)

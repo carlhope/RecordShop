@@ -34,9 +34,9 @@ namespace RecordShop.DataAccess.Repositories
         {
 
             return await _db.Albums
+                .Where(a => a.Id == id)
                 .Include(a => a.ArtistJunction)
                 .ThenInclude(a => a.Artist)
-                .Where(a => a.Id == id)
                 .Include(g=>g.Genres)
                 .FirstOrDefaultAsync();
 
