@@ -17,16 +17,6 @@ namespace RecordShop.Api.Controllers
             _albumService = albumService;
 
         }
-        //[HttpGet]
-        //public override async Task<IActionResult> GetById(int id)
-        //{
-        //    var result = await _albumService.GetByIdAsync(id);
-        //    if (result != null)
-        //    {
-        //        return Ok(result);
-        //    }
-        //    return NotFound("No results matching Id");
-        //}
         [HttpGet("artist/{id}")]
         public async Task<IActionResult> GetAllByArtist(int id)
         {
