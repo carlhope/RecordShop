@@ -36,5 +36,11 @@ namespace RecordShop.DataAccess.Repositories
 
 
         }
+        public async Task<Artist?> GetByArtistName(string name)
+        {
+            return await _db.Artists
+                .Where(x => x.Name == name)
+                .FirstOrDefaultAsync();
+        }
     }
 }

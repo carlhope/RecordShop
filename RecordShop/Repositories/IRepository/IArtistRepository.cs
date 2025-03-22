@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace RecordShop.DataAccess.Repositories.IRepository
 {
-    public interface IArtistRepository:IGenericRepository<Artist>
+    public interface IArtistRepository : IGenericRepository<Artist>
     {
-      
+        Task<Artist?> GetByArtistName(string name);
     }
 }
