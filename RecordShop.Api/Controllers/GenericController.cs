@@ -56,7 +56,7 @@ namespace RecordShop.Api.Controllers
             return NotFound("No results matching Id");
 
         }
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public virtual async Task<IActionResult> Delete(int id)
         {
             var result = await _genericService.DeleteAsync(id);
