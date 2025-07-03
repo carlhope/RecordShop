@@ -1,5 +1,7 @@
 ﻿
 
+using System.Text.Json.Serialization;
+
 namespace RecordShop.Common.Dto.Music
 {
     public class AlbumWriteDto
@@ -8,6 +10,7 @@ namespace RecordShop.Common.Dto.Music
         public string Title { get; set; }
         public string Description { get; set; }
         public List<AlbumGenreWriteDto>? Genres { get; set; }
+        [JsonPropertyName("artistJunction")]
         public List<ArtistAlbumJunctionWriteDto>? ArtistJunction { get; set; }
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace RecordShop.Common.Dto.Music
+﻿using System.Text.Json.Serialization;
+
+namespace RecordShop.Common.Dto.Music
 {
     public class ArtistAlbumJunctionWriteDto
     {

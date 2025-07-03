@@ -25,7 +25,7 @@ namespace RecordShop.Api.Controllers
             {
                 return Ok(result);
             }
-            return NotFound("No results matching artist id");
+            return NoContent();
         }
         [HttpGet("genre/{genre}")]
         public async Task<IActionResult> GetAllByGenre(string genre)
@@ -35,12 +35,12 @@ namespace RecordShop.Api.Controllers
             {
                 return Ok(result);
             }
-            return NotFound("No results matching genre");
+            return NoContent();
         }
         [HttpGet("name/{name}")]
         public async Task<IActionResult> GetByAlbumName(string name)
         {
-            var result = await _albumService.GetByAlbumName(name);
+            var result = await _albumService.GetByAlbumName(name.Trim());
             if (result != null)
             {
                 return Ok(result);

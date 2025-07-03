@@ -65,7 +65,7 @@ namespace RecordShop.DataAccess.Repositories
         public async Task<Album?> GetByAlbumName(string name)
         {
             return await _db.Albums
-                .Where(x => x.Title==name)
+                .Where(x => EF.Functions.Like(x.Title, name))
                 .Include(x => x.ArtistJunction)
                 .ThenInclude(a=>a.Artist)
                 .Include(x => x.Genres)
