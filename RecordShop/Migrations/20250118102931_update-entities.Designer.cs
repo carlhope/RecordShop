@@ -61,7 +61,7 @@ namespace RecordShop.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Genres")
+                    b.Property<string>("AlbumGenres")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -92,7 +92,7 @@ namespace RecordShop.DataAccess.Migrations
 
                     b.HasIndex("AlbumId");
 
-                    b.ToTable("Genres");
+                    b.ToTable("AlbumGenres");
                 });
 
             modelBuilder.Entity("RecordShop.DataAccess.Models.Music.Artist", b =>

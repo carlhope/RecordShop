@@ -15,13 +15,13 @@ namespace RecordShop.DataAccess.Migrations
                 table: "MusicProducts");
 
             migrationBuilder.AddColumn<string>(
-                name: "Genres",
+                name: "AlbumGenres",
                 table: "Albums",
                 type: "nvarchar(max)",
                 nullable: true);
 
             migrationBuilder.CreateTable(
-                name: "Genres",
+                name: "AlbumGenres",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -65,13 +65,13 @@ namespace RecordShop.DataAccess.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Genres");
+                name: "AlbumGenres");
 
             migrationBuilder.DropTable(
                 name: "inventoryItems");
 
             migrationBuilder.DropColumn(
-                name: "Genres",
+                name: "AlbumGenres",
                 table: "Albums");
 
             migrationBuilder.AddColumn<decimal>(

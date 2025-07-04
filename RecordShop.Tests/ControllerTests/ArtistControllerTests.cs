@@ -9,7 +9,7 @@ namespace RecordShop.Tests;
 
 public class ArtistControllerTests
 {
-    Mock<IArtistService> _artistService = new Mock<IArtistService>();
+    Mock<IAlbumGenreService> _artistService = new Mock<IAlbumGenreService>();
     private ArtistController _controller;
 
     [SetUp]

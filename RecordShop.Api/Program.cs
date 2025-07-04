@@ -53,6 +53,8 @@ namespace RecordShop.Api
             builder.Services.AddScoped<IMusicProductService, MusicProductService>();
             builder.Services.AddScoped<IArtistAlbumRepository, ArtistAlbumRepository>();
             builder.Services.AddScoped<IArtistAlbumService, ArtistAlbumService>();
+            builder.Services.AddScoped < IAlbumGenreRepository, AlbumGenreRepository>();
+            builder.Services.AddScoped<IAlbumGenreService, AlbumGenreService>();
 
             builder.Services.AddControllers()
                 .AddJsonOptions(options =>

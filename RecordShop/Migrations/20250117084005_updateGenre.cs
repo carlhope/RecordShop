@@ -12,12 +12,12 @@ namespace RecordShop.DataAccess.Migrations
         {
             migrationBuilder.CreateIndex(
                 name: "IX_Genres_AlbumId",
-                table: "Genres",
+                table: "AlbumGenres",
                 column: "AlbumId");
 
             migrationBuilder.AddForeignKey(
                 name: "FK_Genres_Albums_AlbumId",
-                table: "Genres",
+                table: "AlbumGenres",
                 column: "AlbumId",
                 principalTable: "Albums",
                 principalColumn: "Id",
@@ -29,11 +29,11 @@ namespace RecordShop.DataAccess.Migrations
         {
             migrationBuilder.DropForeignKey(
                 name: "FK_Genres_Albums_AlbumId",
-                table: "Genres");
+                table: "AlbumGenres");
 
             migrationBuilder.DropIndex(
                 name: "IX_Genres_AlbumId",
-                table: "Genres");
+                table: "AlbumGenres");
         }
     }
 }
