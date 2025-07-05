@@ -71,6 +71,12 @@ namespace RecordShop.DataAccess.Repositories
                 .Include(x => x.Genres)
                 .FirstOrDefaultAsync();
         }
+        public override async Task<OperationResult> UpdateAsync(int id, Album updated)
+        {
+            _db.Albums.Update(updated);
+            await _db.SaveChangesAsync();
+            return new OperationResult { IsSuccess = true, Message = "Updated" };
+        }
 
     }
 }

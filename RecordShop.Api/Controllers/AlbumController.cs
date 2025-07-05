@@ -47,5 +47,25 @@ namespace RecordShop.Api.Controllers
             }
             return NotFound("No results matching name");
         }
+        [HttpPut("{id}")]
+        public override async Task<IActionResult> Update(int id, [FromBody] AlbumWriteDto dto)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest("Invalid data provided.");
+            }
+
+            var result = await _albumService.UpdateAsync(id, dto);
+
+            if (result.IsSuccess)
+            {
+                return Ok(new { message = result.Message });
+            }
+            else
+            {
+                return BadRequest(new { message = result.Message });
+            }
+        }
+
     }
 }
