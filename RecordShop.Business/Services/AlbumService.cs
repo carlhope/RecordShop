@@ -113,6 +113,7 @@ namespace RecordShop.Business.Services
                     album.Genres.Add(new AlbumGenre
                     {
                         GenreId = genre,
+                        Genre = (Genre)genre,
                         AlbumId = id
                     });
                 }
