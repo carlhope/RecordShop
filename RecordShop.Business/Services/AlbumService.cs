@@ -53,6 +53,32 @@ namespace RecordShop.Business.Services
             var mapped = _mapper.Map<AlbumReadDto>(result);
             return mapped;
         }
+        public override async Task<OperationResult> CreateAsync(AlbumWriteDto dto)
+        {
+            var result = new OperationResult();
+            try
+            {
+                var album = new Album
+                {
+                    Title = dto.Title,
+                    Description = dto.Description,
+                    Genres = dto.GenreIds?.Select(id => new AlbumGenre { GenreId = id }).ToList(),
+                    ArtistJunction = dto.ArtistJunction?.Select(j => new ArtistAlbumJunction
+                    {
+                        ArtistId = j.ArtistId
+                    }).ToList()
+                };
+
+                result = await _albumRepository.CreateAsync(album);
+            }
+            catch (Exception ex)
+            {
+                result.IsSuccess = false;
+                result.Message = $"Exception: {ex.Message}";
+            }
+
+            return result;
+        }
         public override async Task<OperationResult> UpdateAsync(int id, AlbumWriteDto dto)
         {
             var result = new OperationResult();
@@ -80,8 +106,18 @@ namespace RecordShop.Business.Services
                         AlbumId = id
                     });
                 }
+                // Replace GenreJunction cleanly
+                album.Genres.Clear();
+                foreach (var genre in dto.GenreIds)
+                {
+                    album.Genres.Add(new AlbumGenre
+                    {
+                        GenreId = genre,
+                        AlbumId = id
+                    });
+                }
 
-               result =  await _albumRepository.UpdateAsync(id, album);
+                result =  await _albumRepository.UpdateAsync(id, album);
              
 
             }

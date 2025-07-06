@@ -12,6 +12,7 @@ namespace RecordShop.DataAccess.Models.Music
     {
         public int Id { get; set; }
         public int AlbumId { get; set; }
+        public int GenreId { get; set; }
         public Genre Genre { get; set; }
         //navigation properties
         public Album Album { get; set; }

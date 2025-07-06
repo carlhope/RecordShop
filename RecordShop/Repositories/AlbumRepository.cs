@@ -71,7 +71,13 @@ namespace RecordShop.DataAccess.Repositories
                 .Include(x => x.Genres)
                 .FirstOrDefaultAsync();
         }
-        public override async Task<OperationResult> UpdateAsync(int id, Album updated)
+        public override async Task<OperationResult> CreateAsync(Album album)
+        {
+            _db.Albums.Add(album);
+            await _db.SaveChangesAsync();
+            return new OperationResult { IsSuccess = true, Message = "Updated" };
+        }
+        public override async Task<OperationResult> UpdateAsync(int id, Album updated)//id is unused, however used in generic method being overridden. must remain until generic updated.
         {
             _db.Albums.Update(updated);
             await _db.SaveChangesAsync();
